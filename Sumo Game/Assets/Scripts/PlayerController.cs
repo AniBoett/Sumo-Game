@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    private Rigidbody playerRb;
+
+    public float speed = 5.0f;
+    private GameObject focalPoint;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerRb = GetComponent<Rigidbody>();
+        focalPoint = GameObject.Find("FocalPoint");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //player moves forwards relative to the direction of the camera
+        float forwardInput = Input.GetAxis("Vertical");
+        playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+    }
+}
