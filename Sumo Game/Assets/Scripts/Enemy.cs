@@ -23,5 +23,10 @@ public class Enemy : MonoBehaviour
         //enemy tracks and follows player
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection * speed);
+		//destroy enemies that fall from platform
+		if (transform.position.y < -10) 
+		{
+			Destroy(gameObject);
+		}
     }
 }
